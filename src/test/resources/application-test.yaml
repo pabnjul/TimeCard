@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:time;mode=MYSQL
+
+logging:
+  level:
+    root: warn
+    '[com.workercareclinic]': debug
