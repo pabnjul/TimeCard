@@ -1,12 +1,13 @@
 package com.workercareclinic.time.controller;
 
-import javax.validation.Valid;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
-import com.workercareclinic.time.entity.TimeCard;
+import com.workercareclinic.time.entity.Employee;
 import com.workercareclinic.time.entity.TimeSchedule;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -14,12 +15,11 @@ import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.info.Info;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.parameters.RequestBody;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.servers.Server;
 
 @Validated  
-@RequestMapping("/orders")
+@RequestMapping("/timecard")
 @OpenAPIDefinition(info = @Info(title = "Time Card Service"), servers = {
     @Server(url = "http://localhost:8080", description = "Local server.")})
 public interface TimeCardController {
@@ -30,10 +30,10 @@ public interface TimeCardController {
     responses = {
         @ApiResponse (
             responseCode = "201", 
-            description = "The created time card is returned", 
+            description = "The time stamp is saved", 
             content = @Content(
                 mediaType = "application/json", 
-                schema = @Schema(implementation = TimeCard.class))),
+                schema = @Schema(implementation = TimeSchedule.class))),
         @ApiResponse(
             responseCode = "400", 
             description = "The request parameters are invalid", 
@@ -59,6 +59,6 @@ public interface TimeCardController {
   
 @PostMapping
 @ResponseStatus(code = HttpStatus.CREATED)
-TimeSchedule createTimeCard (@Valid @RequestBody TimeCard timecard);
+TimeSchedule saveTimeSchedule(Employee employee, LocalDate clockDate, LocalTime clockTime);
   
 }

@@ -16,15 +16,16 @@ public class Employee{
 
   private Long employeeId;
   private String name;
-  private int minHours;
-  private double ptoHours;
+  private Double minHours;
+  private Double ptoHours;
   private boolean otEligible;
   
-  @JsonIgnore
+//removed json ignor to use employeeID for now
+    @JsonIgnore
   public Long getemployeeId() {
     return employeeId;
   }
-  
+//  
 //  @Override
 //  public int compareTo(Employee that) {
 //  

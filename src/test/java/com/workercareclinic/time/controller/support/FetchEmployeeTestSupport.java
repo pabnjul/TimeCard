@@ -17,14 +17,14 @@ public class FetchEmployeeTestSupport extends BaseTest{
     //@formatter:off
     list.add(Employee.builder()
     .name("Dave Schmidt")
-    .minHours(80)
+    .minHours((double) 80)
     .ptoHours(5.65)
     .otEligible(true)
     .build());
     
    list.add(Employee.builder()
        .name("Allie Glenn")
-       .minHours(72)
+       .minHours((double) 72)
        .ptoHours(14.05)
        .otEligible(true)
     .build());

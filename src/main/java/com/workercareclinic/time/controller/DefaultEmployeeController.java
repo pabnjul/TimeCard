@@ -20,4 +20,23 @@ public class DefaultEmployeeController implements EmployeeController {
     return employeeService.fetchEmployee(name);
   }
 
+  @Override
+  public void deleteEmployee(String name) {
+    log.info("deleting name={}", name);
+    employeeService.deleteEmployee(name);
+  }
+
+  @Override
+  public Employee addEmployee(String name, Double minHours, Double ptoHours,
+      boolean otEligible) {
+    log.info("adding name={}", name);
+    return employeeService.addEmployee(name, minHours, ptoHours, otEligible);
+  }
+
+  @Override
+  public Employee updateEmployee(String name, Employee updatedEmployee) {
+    log.info("updating name={}", name, "PTO hours");
+    return employeeService.updateEmployee(name, updatedEmployee);
+  }
+
 }

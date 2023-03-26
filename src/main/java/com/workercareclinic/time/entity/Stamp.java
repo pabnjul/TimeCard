@@ -1,8 +1,9 @@
 package com.workercareclinic.time.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
+
+//implement stampCorrect feature at a later date
 
 @Data
 @Builder
@@ -10,11 +11,11 @@ import lombok.Data;
 public class Stamp {
   private Long stampID;
   private StampChoice stampChoice;
-  private Boolean stampCorrect;
+//  private Boolean stampCorrect;
 
-  @JsonIgnore
-  public Long getStampID() {
-    return stampID;
-  }
+//  @JsonIgnore
+//  public Long getStampID() {
+//    return stampID;
+//  }
   
 }

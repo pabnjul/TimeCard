@@ -23,10 +23,45 @@ public class DefaultEmployeeService implements EmployeeService {
     List<Employee> employees = employeeDao.fetchEmployees(name);
 
     if (employees.isEmpty()) {
-      String msg = String.format("No employees foud with name=%s", name);
+      String msg = String.format("No employees found with name=%s", name);
       throw new NoSuchElementException(msg);
     }
-  
 
-  return employees;
-  }}
+
+    return employees;
+  }
+
+  @Override
+  public void deleteEmployee(String name) {
+    log.info("DeleteEmployee was called with name={}", name);
+    List<Employee> employees = employeeDao.fetchEmployees(name);
+
+    if (employees.isEmpty()) {
+      String msg = String.format("No employees found with name=%s", name);
+      throw new NoSuchElementException(msg);
+    }
+    employeeDao.deleteEmployee(name);
+  }
+
+  @Override
+  public Employee addEmployee(String name, Double minHours, Double ptoHours,
+      boolean otEligible) {
+    log.info("addEmployee was called with name={}", name);
+
+    return employeeDao.addEmployee(name, minHours, ptoHours, otEligible);
+  }
+
+  @Override
+  public Employee updateEmployee(String name, Employee updatedEmployee) {
+    log.info("UpdateEmployee was called with name={}", name);
+    List<Employee> employees = employeeDao.fetchEmployees(name);
+
+    if (employees.isEmpty()) {
+      String msg = String.format("No employees found with name=%s", name);
+      throw new NoSuchElementException(msg);
+    }
+
+
+    return employeeDao.updateEmployee(name, updatedEmployee);
+  }
+}
